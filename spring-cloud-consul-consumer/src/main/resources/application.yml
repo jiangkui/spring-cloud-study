@@ -8,4 +8,16 @@ spring:
       host: localhost
       port: 8500
       discovery:
-        register: false
+        register: true
+
+# Feign hystrix support
+feign:
+  hystrix:
+    enabled: true
+
+# hystrix dashboard support
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health

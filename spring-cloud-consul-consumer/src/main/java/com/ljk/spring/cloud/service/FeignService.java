@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author jiangkui
  * @version 1.0, 2019-10-01 11:47
  */
-@FeignClient(name = "consul-server")
+@FeignClient(name = "consul-server", fallback = HystrixFallback.class)
 public interface FeignService{
 
     @RequestMapping(value = "/showName")

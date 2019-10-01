@@ -1,0 +1,12 @@
+server:
+  port: 8610
+spring:
+  application:
+    name: turbine-dashboard
+
+# turbine 配置
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: consul-consumer
+  clusterNameExpression: new String('default')
