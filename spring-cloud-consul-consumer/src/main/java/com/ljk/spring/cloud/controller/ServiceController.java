@@ -1,5 +1,6 @@
 package com.ljk.spring.cloud.controller;
 
+import com.ljk.spring.cloud.service.FeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -19,6 +20,9 @@ public class ServiceController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
+    @Autowired
+    private FeignService feignService;
+
     /**
      * 获取所有服务
      */
@@ -33,5 +37,15 @@ public class ServiceController {
     @RequestMapping("/discover")
     public Object discover() {
         return loadBalancerClient.choose("consul-server").getUri().toString();
+    }
+
+    @RequestMapping("/callShowName")
+    public Object callShowName(String name) {
+        return feignService.callShowName(name);
+    }
+
+    @RequestMapping("/callHello")
+    public Object callHello() {
+        return feignService.callHello();
     }
 }
