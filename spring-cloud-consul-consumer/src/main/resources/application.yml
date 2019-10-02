@@ -3,9 +3,10 @@ feign:
   hystrix:
     enabled: true
 
-# hystrix dashboard support
+# 开启监控接口，这里所有的接口，都有前缀： actuator/refresh
 management:
   endpoints:
     web:
       exposure:
-        include: hystrix.stream, info, health
+        include: "*"
+#        include: hystrix.stream, info, health
