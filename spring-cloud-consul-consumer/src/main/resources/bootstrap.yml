@@ -1,0 +1,19 @@
+server:
+  port: 8603
+spring:
+  application:
+    name: consul-consumer-all-client
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        register: true
+    config:
+      name: commonConfigServerFile
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        service-id: SpringConfigServer
+
