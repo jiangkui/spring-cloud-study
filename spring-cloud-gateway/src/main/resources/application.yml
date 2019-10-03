@@ -1,0 +1,25 @@
+server:
+  port: 8640
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: cloud-gateway
+        register: true
+
+    gateway:
+      routes:
+        - id: host_route
+          uri: http://localhost:8603
+          predicates:
+            - Path=/a/**
+          filters:
+            - StripPrefix=1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
