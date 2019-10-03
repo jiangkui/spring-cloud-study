@@ -16,4 +16,22 @@ spring:
       discovery:
         enabled: true
         service-id: SpringConfigServer
-
+      fail-fast: true
+    bus:
+      trace:
+        enabled: true
+  # 本地要启动 rabbitMq
+  # - 安装：
+  #     https://webcache.googleusercontent.com/search?q=cache:ZvQPTELRrSMJ:https://www.jianshu.com/p/60c358235705+&cd=1&hl=zh-CN&ct=clnk
+  # - 后台启动
+  #     rabbitmq-server -detached
+  # - 查看状态
+  #     rabbitmqctl status
+  # - 访问可视化监控插件的界面
+  #     浏览器内输入 http://localhost:15672,默认的用户名密码都是guest,登录后可以在Admin那一列菜单内添加自己的用户
+  # - rabbitmqctl stop 关闭
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
